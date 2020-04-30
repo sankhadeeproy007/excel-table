@@ -1,0 +1,15 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-rivian-template-dev-152025-authRole",
+            "UnauthRoleArn": "arn:aws:iam::151904079543:role/amplify-rivian-template-dev-152025-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::151904079543:role/amplify-rivian-template-dev-152025-authRole",
+            "Region": "eu-central-1",
+            "DeploymentBucketName": "amplify-rivian-template-dev-152025-deployment",
+            "UnauthRoleName": "amplify-rivian-template-dev-152025-unauthRole",
+            "StackName": "amplify-rivian-template-dev-152025",
+            "StackId": "arn:aws:cloudformation:eu-central-1:151904079543:stack/amplify-rivian-template-dev-152025/099c1e20-8ac8-11ea-8418-06a85d409ac4",
+            "AmplifyAppId": "d3vm675vo8fw8k"
+        }
+    }
+}
