@@ -2,6 +2,8 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import MyComponent from './MyComponent';
+
 function App() {
   return (
     <div className="App">
@@ -20,6 +22,7 @@ function App() {
         >
           Learn React
         </a>
+        <MyComponent name="Sankhadeep" />
       </header>
     </div>
   );
