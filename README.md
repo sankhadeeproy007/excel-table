@@ -1,68 +1,120 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React Code Style Guide
 
-## Available Scripts
+React projects' best practices to follow.
 
-In the project directory, you can run:
+# Introduction
 
-### `yarn start`
+This is meant to be a guide to help new developers understand
+the React code style and best practices to adopt.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Table of contents
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- [Component definition](#component-definition)
+- [Project organization](#project-organization)
+  - [Components](#components)
+  - [Screens](#screens)
+- [Code Standards](#code-standards)
+  - [Destructure props](#destructure-your-props)
+  - [Screens](#screens)
 
-### `yarn test`
+# Component definition
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+All components (components or screens) should **always** be
+defined as a directory, named with pascal casing. The main component file
+should be `index.js` and stylesheet `style.css`.
 
-### `yarn build`
+```
+AwesomeTable/
+├── index.js
+└── style.css
+```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Styles should always be defined in a separate CSS file
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+[:arrow_up: Back to top][table-of-contents]
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Project organization
 
-### `yarn eject`
+Project components should be separated in at least three directories:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+awesome-react-project/
+└── src/
+   ├── components/
+   └── screens/
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Each of these directories have special types of components:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### `components/`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Reusable components. Ideally shouldn't store state. Stuff like buttons, inputs,
+labels, tables and all presentational components goes here. These components can also accept functions as props and dispatch events.
 
-## Learn More
+### `screens/`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Screen components can store state, receive route parameters and dispatch
+Redux actions when applicable. They represent the application routes and most times are displayed by a router. Screens are also responsible for handling container components callbacks and flowing data into children containers.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+[:arrow_up: Back to top][table-of-contents]
 
-### Code Splitting
+# Code standards
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## Destructure your `props`
 
-### Analyzing the Bundle Size
+### props should be destructed while defining the Component
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+```js
+const MyButton = ({ prop1, prop2, ...props }) => {
+  // Do required operations based on prop1 and prop2
+  return <button {...props} />;
+};
+```
 
-### Making a Progressive Web App
+## Code style
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+### Line length should not exceed 80 characters.
 
-### Advanced Configuration
+### Use explanatory variables
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+Bad
 
-### Deployment
+```js
+const onlyNumbersRegex = /^\d+$/;
+const validateNumber = (message) => (value) =>
+  !onlyNumbersRegex.test(value) && message;
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+validateNumber('error message')(1);
+```
 
-### `yarn build` fails to minify
+Good
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```js
+const onlyNumbersRegex = /^\d+$/;
+const getNumberValidation = (message) => (value) =>
+  !onlyNumbersRegex.test(value) && message;
+
+const isNumber = getNumberValidation('error message');
+
+isNumber(1);
+```
+
+### Use searchable names
+
+Bad
+
+```js
+setTimeout(doSomething, 86400000);
+```
+
+Good
+
+```js
+const DAY_IN_MILLISECONDS = 86400000;
+
+setTimeout(doSomething, DAY_IN_MILLISECONDS);
+```
+
+## Naming
+
+### Screen and components folders names must start with capital letter.
