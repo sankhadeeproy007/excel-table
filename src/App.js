@@ -5,6 +5,12 @@ import {
   Route,
   Link,
 } from 'react-router-dom';
+import './App.css';
+
+import About from './screens/About';
+import Users from './screens/Users';
+import Home from './screens/Home';
+
 
 export default function App() {
   return (
@@ -38,16 +44,4 @@ export default function App() {
       </div>
     </Router>
   );
-}
-
-function Home() {
-  return <h2>Home</h2>;
-}
-
-function About() {
-  return <h2>About</h2>;
-}
-
-function Users() {
-  return <h2>Users</h2>;
 }
