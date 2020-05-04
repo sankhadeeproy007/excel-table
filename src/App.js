@@ -1,47 +1,18 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-} from 'react-router-dom';
-import './App.css';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { ThemeProvider } from '@material-ui/core/styles';
 
-import About from './screens/About';
-import Users from './screens/Users';
-import Home from './screens/Home';
+import Layout from './components/Layout/index';
+import theme from './theme/index';
 
+import routes from './routes';
 
-export default function App() {
+export default function AppRouter() {
   return (
     <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-          </ul>
-        </nav>
-
-        <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/users">
-            <Users />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </div>
+      <ThemeProvider theme={theme}>
+        <Layout routes={routes} />
+      </ThemeProvider>
     </Router>
   );
 }

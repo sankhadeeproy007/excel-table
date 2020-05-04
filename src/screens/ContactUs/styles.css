@@ -1,0 +1,55 @@
+.root {
+  background-color: lightgray;
+}
+
+.container {
+  width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+
+.img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  padding-bottom: 05%;
+}
+
+.ex1 {
+  width: 1100px;
+  height: 300px;
+  overflow: scroll;
+}
+
+.button {
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 10%;
+}
+
+.padding {
+  padding-top: 5px;
+}
